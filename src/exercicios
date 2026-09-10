@@ -1,0 +1,107 @@
+1) Explique a diferença entre tamanho e capacidade em um ArrayList:
+R: O tamanho do ArrayList é obtido pelo size(), representa o numero real dos elementos dentro de um ArrayList,
+Ja a capacidade refere-se ao tamanho usado para armazenar os elementos, o maximo de itens que o ArrayList pode conter
+
+2) Ao remover um elemento de um ArrayList por  índice,
+o que acontece com os elementos seguintes na lista? Qual a complexidade dessa operação?
+R: Se a remoção for feita pelo indice, exemplo: a.remove(6) e existe o indice 6, a alocação da memoria desse indice se torna vazia
+e todos os indices posteriores alocam uma memoria para tras, exemplo 7 vira 6, 8 vira 7.
+A complexidade vai depender de quantos elementos existem nesse ArrayList, podendo aumentar a complexidade por conta da alocação
+
+3) Explique a diferença entre remove(int index) e remove(Object o) no ArrayList.
+Dê um exemplo em que o uso de números pode confundir o programador.
+R:
+""
+public class Main {
+    static void main(String[] args) {
+        ArrayList<String> a = new ArrayList<>();
+                a.add("MAMACO");
+                a.add("EDU");
+                a.add("ANDRE");
+
+        System.out.println(a);
+                a.remove(2);
+        System.out.println(a);
+
+
+        a.remove("MAMACO");
+        System.out.println(a);
+    }
+}
+""
+desse jeito o programador não entende a dificuldade do exercicio pois é executado corretamente os dois tipos de remove.
+Porem, caso fosse um Integer, o computador não sabe interpretar se sua inteção é tirar o indice ou o numero com aquele valor de fato
+
+Ou seja, basicamente quando você faz isso: a.remove(2); você está chamando: remove(int index), então ele vai remover o indice 2.
+Agora usando o Object, se você quer remover o NUMERO 2, seria a.remove(Integer.valueOf(2)), nesse caso seria como chamar o (Object o)
+
+4-Considere o seguinte código: ArrayList lista = new ArrayList<>();
+ lista.add(2);
+  lista.add(4);
+   lista.add(6);
+    lista.add(8);
+     lista.add(10);
+      lista.add(2, 99);
+       System.out.println(lista);
+ Qual será a saída no console? Explique o que aconteceu.
+
+ R: A saida no terminal será [2, 4, 99, 6, 8, 10], basicamente toda vez que você adiciona um elemento apenas, ex (add(2)),
+ ele irá adicionar o elemento 2 no ultimo indice existente no ArrayList, então se tivesse já o 1, 4, 3, ele seria o indice 3 (4 elemento).
+ Agora quando fazemos add(2,99) estamos primeiro passando em qual indice ele vai ficar (nesse caso 2) e qual vai ser o elemento presente.
+
+ 5-Dada a lista: ArrayList lista = new ArrayList<>();
+  lista.add(7);
+   lista.add(9);
+   lista.add(11);
+    lista.add(13);
+     lista.add(15);
+      lista.remove(1);
+       System.out.println(lista);
+  Qual será a saída? Explique por quê.
+
+  R: A saída será 7,11,13,15. Isso acontece pois ao usar o remove(n), ele irá buscar o índice que pertence a esse número, nesse caso o 9 seria o índice 1, ou seja ele foi removido do ArrayList
+
+  6-Escreva um código que insira 12 elementos consecutivos (0 até 11) em um ArrayList criado sem parâmetro de capacidade inicial.
+   - Qual a capacidade inicial?
+  - Para qual capacidade o ArrayList crescerá ao ultrapassar os 10 elementos?
+
+  R: Ao criar um ArrayList sem informar a capacidade inicial, sua capacidade padrão passa a ser 10 quando o primeiro elemento é inserido.
+   Ao ultrapassar essa capacidade, o ArrayList aumenta aproximadamente 50%, passando de 10 para 15 posições.
+
+   7- Explique a diferença entre ArrayList e LinkedList
+   R: a principal diferença entre os 2 são a maneira de como os elementos são armazenados na memória.
+   O arrayList usa um array internamente (dinamico) e por conta disso é muito facil acessar um elemento pelo indice, é muito rápido, porem remover ou adicionar um elemento no meio do ArrayList pode ser custoso pois os elementos precisam ser desalocados e alocados novamente
+   O LinkedList funciona como uma lista encadeada. Cada elemento é um nó que possui referências para o elemento anterior e o proximo.
+   Ana <-> João <-> Maria, desse jeito os elementos não são armazenados em um array continuo, adicionar elementos ou remover nas extremidades da lista pode ser muito facil,
+   porem o acesso em uma posição tende a ser mais lento, a lista percorre os nós até encontrar a posição correta.
+
+   8- Quais as vantagens e desvantagens de usar LinkedList?
+   R:
+   Vantagens:
+   - Inserir e remover elementos nas extremidades é rápido.
+   - Não precisa redimensionar um array quando cresce.
+   - Possui métodos específicos para trabalhar com o início e o final da lista.
+   Desvantagens:
+   - O acesso por índice é mais lento, pois precisa percorrer os nós dos elementos.
+   - Consome mais memória, pois cada elemento guarda referências para o próximo e o anterior.
+   - Para buscas e acessos frequentes, geralmente é menos eficiente que ArrayList.
+
+   9- Cite dois métodos comuns da classe LinkedList e explique para que servem.
+   - addFirst() — adiciona um elemento no início da lista.
+
+   LinkedList<String> nomes = new LinkedList<>();
+
+   nomes.add("João");
+   nomes.addFirst("Gustavo");
+
+   System.out.println(nomes);
+   Resultado:
+   [Gustavo, João]
+
+   - addLast() — adiciona um elemento no final da lista.
+
+   nomes.addLast("Maria");
+
+   System.out.println(nomes);
+   Resultado:
+   [Gustavo, João, Maria]

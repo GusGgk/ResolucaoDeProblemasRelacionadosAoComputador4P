@@ -1,47 +1,52 @@
 package ExerciciosFilasEPilhas;
 
-public class Exercicio2FilaCircular {
+public class FilaCircular {
+
     private int[] chamados;
     private int inicio;
     private int fim;
     private int tamanho;
 
-    public Exercicio2FilaCircular(){
+    public FilaCircular() {
         chamados = new int[3];
         inicio = 0;
         fim = 0;
         tamanho = 0;
     }
 
-    public void adicionarChamado(int chamado){
-        if(tamanho == chamados.length){
-            System.out.println("Fila cheia! Batman precisa atender um chamado");
-            return;
+    public void enqueue(int chamado) {
+        if (tamanho == chamados.length) {
+            throw new RuntimeException("Fila cheia!");
         }
 
         chamados[fim] = chamado;
+
         fim = (fim + 1) % chamados.length;
 
         tamanho++;
     }
 
-    public int atenderChamado(){
-        if(tamanho==0){
-            throw new RuntimeException("Não existem chamados em andamento");
+    public int dequeue() {
+        if (tamanho == 0) {
+            throw new RuntimeException("Fila vazia!");
         }
+
         int chamado = chamados[inicio];
 
         inicio = (inicio + 1) % chamados.length;
 
         tamanho--;
-        return  chamado;
+
+        return chamado;
     }
 
-    public void mostrarChamados(){
-        System.out.println("Bat-Sinais aguardando:");
+    public void mostrarFila() {
+        System.out.println("Chamados na fila:");
 
-        for(int i = 0; i < tamanho; i++){
+        for (int i = 0; i < tamanho; i++) {
+
             int posicao = (inicio + i) % chamados.length;
+
             System.out.println(chamados[posicao]);
         }
     }

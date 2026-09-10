@@ -1,17 +1,21 @@
 package ExerciciosFilasEPilhas;
 
-public class Main1 {
-    static void main(String[] args) {
-        Exercicio1FilaResgate filaResgate = new Exercicio1FilaResgate(5);
+import ExerciciosFilasEPilhas.FilaResgate;
 
-        filaResgate.inserirPedido(101);
-        filaResgate.inserirPedido(102);
-        filaResgate.inserirPedido(103);
+public class Main {
 
-        filaResgate.mostrarPedidos();
+    public static void main(String[] args) {
 
-        System.out.println("Atendendo: " + filaResgate.atenderPedido());
+        FilaResgate fila = new FilaResgate(5);
 
-        filaResgate.mostrarPedidos();
+        fila.enqueue(101);
+        fila.enqueue(102);
+        fila.enqueue(103);
+
+        fila.mostrarFila();
+
+        System.out.println("Pedido atendido: " + fila.dequeue());
+
+        fila.mostrarFila();
     }
 }

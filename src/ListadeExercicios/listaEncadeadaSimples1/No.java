@@ -1,4 +1,4 @@
-package ListadeExercicios.exercicio1;
+package ListadeExercicios.listaEncadeadaSimples1;
 
 public class No {
     Cachorrinho cachorrinho;
