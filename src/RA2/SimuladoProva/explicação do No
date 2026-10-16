@@ -1,0 +1,30 @@
+O que muda em cada versão:
+A -
+Como desce?
+    Desce com um laço de while(true)
+Como sabe onde pendurar o novo nó?
+    Olha para o proximo nó antes de descer, se for null, pendura ali
+Árvore vazia:
+    Tratada no início (raiz == null)
+
+B -
+Como desce?
+    Recursão (usa método auxiliar)
+Como sabe onde pendurar o novo nó?
+    Cada chamada olha o filho, se for null pendura ali
+Árvore vazia:
+    Tratada no início do metodo principal
+C -
+Como desce?
+    Laço até cair em null
+Como sabe onde pendurar o novo nó?
+    lembrou o pai e o lado por onde desceu
+Árvore vazia:
+    pai == null no fim
+
+---
+O que não muda: as quatro regras de uma inserção correta:
+1- Recusa valor repitido: testa valor == ... e devolve false antes de inserir.
+2- Desce comparando: se o valor é menor, vai para esquerda, se maior, direita
+3- Pendura um novo nó no lugar vazio certo: Como filho esquerdo ou direito do último nó visitado, ou na raiz, se a árvore estiver vazia.
+4 - Atualiza a quantidade: só quando de fato insere (quantidade++)
